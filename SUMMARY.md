@@ -130,8 +130,20 @@
 
 ## ETL
 
-* [Integration Gateway ETL Overview](etl/integration-gateway-etl-overview.md)
-* [Data Connectors](etl/data-connectors.md)
-* [Workflows](etl/workflows.md)
+* [Integration Gateway ETL Overview](etl/glyue-etl-overview.md)
+* [Data Connectors](etl/data-connectors/README.md)
+  * [SFTP](etl/data-connectors/sftp.md)
+  * [HubSpot](etl/data-connectors/hubspot.md)
+  * [Salesforce](etl/data-connectors/salesforce.md)
+  * [Creatio](etl/data-connectors/creatio.md)
+  * [PostgreSQL](etl/data-connectors/postgresql.md)
+  * [Oracle SQL](etl/data-connectors/oracle-sql.md)
+  * [Amazon S3 Bucket](etl/data-connectors/amazon-s3-bucket.md)
+* [Workflows](etl/workflows/README.md)
+  * [Extract](etl/workflows/extract.md)
+  * [Transform](etl/workflows/transform.md)
+  * [Load](etl/workflows/load.md)
+  * [Filter](etl/workflows/filter.md)
 * [Run History](etl/run-history.md)
 * [Scheduler](etl/scheduler.md)
+* [Value Mappings](etl/value-mappings.md)

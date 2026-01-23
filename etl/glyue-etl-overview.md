@@ -1,11 +1,25 @@
-# Glyue ETL Overview
+# Integration Gateway ETL Overview
 
-Glyue ETL is a high performance ETL solution built specifically for banks and credit unions.
+Integration Gateway (IG) ETL is a high-performance extract, transform, load (ETL) solution built specifically for banks and credit unions.
 
-It's built on a streaming architecture that allows it to process hundreds-of-thousands of rows of data efficiently, while making it simple to build the transformation logic that meets any business needs.&#x20;
+The platform is built on a streaming architecture that allows it to process millions of rows of data efficiently, while making it simple to build the transformation logic that meets any business needs.
 
-To get started, read about how to [connect 3rd-party systems to Glyue ETL](data-connectors.md) and how to [build an ETL workflow](workflows.md), or watch the video below that gives a visual walkthrough of the process.
+{% content-ref url="data-connectors/" %}
+[data-connectors](data-connectors/)
+{% endcontent-ref %}
 
-{% embed url="https://drive.google.com/file/d/1uh1YsC_KukG0Ydaf575fVelWQgHi0z6t/view?usp=sharing" %}
-ETL Demo
-{% endembed %}
+{% content-ref url="workflows/" %}
+[workflows](workflows/)
+{% endcontent-ref %}
+
+{% content-ref url="run-history.md" %}
+[run-history.md](run-history.md)
+{% endcontent-ref %}
+
+{% content-ref url="scheduler.md" %}
+[scheduler.md](scheduler.md)
+{% endcontent-ref %}
+
+{% content-ref url="value-mappings.md" %}
+[value-mappings.md](value-mappings.md)
+{% endcontent-ref %}

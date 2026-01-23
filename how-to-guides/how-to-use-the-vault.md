@@ -1,8 +1,8 @@
 # How to use the Vault
 
-The Glyue vault feature provides a way for configuration, secrets, and state to be read and written by integrations.
+The Integration Gateway vault feature provides a way for configuration, secrets, and state to be read and written by integrations.
 
-More specifically, it is an API for storing and retrieving JSON in the database, as well as a page in the Glyue application to manage the stored content.
+More specifically, it is an API for storing and retrieving JSON in the database, as well as a page in the Integration Gateway application to manage the stored content.
 
 
 
@@ -66,7 +66,9 @@ You vault item is now saved, and can be seen on the vault page
 
 This step assumes you have an existing integration called "my-integration"
 
-1\) Navigate to the admin page by pressing the profile icon on the top-right of Glyue and select "Admin"![](<../.gitbook/assets/image (8).png>)
+1\) Navigate to the admin page by pressing the profile icon on the top-right of Integration Gateway and select "Admin"
+
+![](<../.gitbook/assets/image (8).png>)
 
 2\) On the page that appears, scroll to and click on "+ Add" next to "Vault Permissions"
 
@@ -78,7 +80,7 @@ This step assumes you have an existing integration called "my-integration"
 
 4\) Press save
 
-5\) Return to the Glyue Application by pressing "View Site" on the top-right corner of your screen
+5\) Return to the Integration Gateway Application by pressing "View Site" on the top-right corner of your screen
 
 <figure><img src="../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
 
@@ -99,7 +101,7 @@ with open_vault('my-vault') as vault:
 debug(my_data, label="Here's what was in the vault")
 ```
 
-<figure><img src="../.gitbook/assets/image (110).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (195).png" alt=""><figcaption></figcaption></figure>
 
 If you do the above, and run your integration, you should see this in your run history
 

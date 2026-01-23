@@ -1,6 +1,6 @@
 # Workflows
 
-A workflow is primary organization unit within Glyue ETL. A workflow comprises:
+A workflow is primary organization unit within Integration Gateway ETL. A workflow comprises:
 
 * A source data connection
 * A destination data connection
@@ -25,11 +25,11 @@ Workflows exist to perform transformations on data from the source system, then 
 
 <figure><img src="../.gitbook/assets/Screenshot 2025-03-20 at 11.38.31 AM.png" alt=""><figcaption><p>Example transformations</p></figcaption></figure>
 
-Records from the source system are transformed sequentially, and all transformations are applied to a given record. If a transformation encounters an error, Glyue ETL will note the error and continue with the remaining transformations and records.
+Records from the source system are transformed sequentially, and all transformations are applied to a given record. If a transformation encounters an error, Integration Gateway ETL will note the error and continue with the remaining transformations and records.
 
 
 
-Glyue ETL supports the following transformation types:
+Integration Gateway ETL supports the following transformation types:
 
 | Transformation Type | Purpose                                                                        | Parameters                                                                                                     |
 | ------------------- | ------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------- |

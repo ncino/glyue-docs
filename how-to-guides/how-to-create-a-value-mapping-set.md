@@ -68,7 +68,7 @@ Having created the Value Mapping Set, we can now create the component Value Mapp
 Enter the incoming value in the `From` column, then the corresponding output value in the `To` column.&#x20;
 
 {% hint style="info" %}
-If you have many Value Mappings already formatted in an external spreadsheet, you can simply create empty rows for them, then copy/paste them into the corresponding cells in Glyue.
+If you have many Value Mappings already formatted in an external spreadsheet, you can simply create empty rows for them, then copy/paste them into the corresponding cells in Integration Gateway.
 {% endhint %}
 
 ### Using Value Mapping Sets Outside of Field Mappings
@@ -77,6 +77,6 @@ Value Mapping Sets are powerful because they are the source-of-truth for the tra
 
 Value Mappings Sets can still be used in these situations via the `map_value()` function, which takes in the name of the Value Mapping Set and the input value, and returns the corresponding output value.&#x20;
 
-More about `map_value()` can be found in [its documentation](../glyue-technical-reference/special\_functions/#map\_value).
+More about `map_value()` can be found in [its documentation](../reference/special_functions/#map_value).
 
 [^1]: A "deterministic transformation" is one that always produces the same result if given the same input

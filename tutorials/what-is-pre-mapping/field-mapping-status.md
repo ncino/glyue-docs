@@ -13,7 +13,7 @@ Since the goal of **Pre-Mapping** is to review each of the **Field Mappings**, t
 * **Needs Testing** - This means you believe this **Field Mapping** to be correct but that it needs testing before being ready for production.
 * **Approved** - This means that mapping is complete and the **Field Mapping** has been fully tested and is ready for production. <mark style="background-color:blue;">NOTE: This status will not be used until the User Acceptance Testing (UAT) phase.</mark>
 
-![](<../../.gitbook/assets/image (5) (1).png>)
+![](<../../.gitbook/assets/image (19).png>)
 
 {% hint style="info" %}
 **Pre-Mapping** is complete when EVERY **Field Mapping Status** has been transitioned from **Not Started** to **Needs Testing, Not Used, Waiting for Support, or Change Requested**

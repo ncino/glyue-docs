@@ -2,7 +2,7 @@
 
 When developing integrations, Sandbox Banking Solution Engineers utilize separate `DEV` and `PROD` environments to write code and test changes before deploying that code to a production environment.&#x20;
 
-When changes to an integration are ready to be deployed to the `PROD` environment, Glyue provides two methods for performing a migration:
+When changes to an integration are ready to be deployed to the `PROD` environment, Integration Gateway provides two methods for performing a migration:
 
 * [Migrating a whole integration](how-to-migrate-an-integration.md#migrating-a-whole-integration)
 * [Migrating part of an integration](how-to-migrate-an-integration.md#migrating-part-of-an-integration)
@@ -33,7 +33,7 @@ Migrating a whole integration will replace the copy of the integration that's cu
 
 ### Migrating Part of an Integration
 
-Glyue also supports migrating selected portions of an integration, while leaving the rest of the integration as-is. The selected changes are called a &#x63;_&#x68;angeset,_ and this type of migration is called a _Changeset Migration._
+Integration Gateway also supports migrating selected portions of an integration, while leaving the rest of the integration as-is. The selected changes are called a &#x63;_&#x68;angeset,_ and this type of migration is called a _Changeset Migration._
 
 Changeset migrations are useful in situations such as:
 
@@ -48,11 +48,11 @@ To perform a changeset migration:
    \
    &#xNAN;_&#x4D;igrate_ indicates whether a change should be included in the migration.\
    &#xNAN;_&#x43;hange_ describes the type of change (add / edit / delete).\
-   ![](<../.gitbook/assets/image (108).png>)
+   ![](<../.gitbook/assets/image (193).png>)
 4. Using the _View Changes_ page, select the changes you wish to include in the migration changeset by setting the _Migrate_ column to `true` for the selected rows.
 5. When you're finished selecting specific changes, click _Save Change Set_ on the toolbar along the bottom right. This will show a summary of the selected changes, along with a text field to optionally name your change set. Enter a descriptive name for the changes.
 
-<figure><img src="../.gitbook/assets/image (107).png" alt="" width="510"><figcaption><p>The interface reviewing the specific rows selected for a migration.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (192).png" alt="" width="510"><figcaption><p>The interface reviewing the specific rows selected for a migration.</p></figcaption></figure>
 
 6. Click _Migrate Change Set_ on the toolbar along the bottom right. This will take you back to the _Migrate_ page.
 7. On the _Migrate_ page, reselect the source system and integration. Then select the _Change Set Migration_ mod&#x65;_,_ select the changeset you created in step 5, then click _Migrate Change Set._

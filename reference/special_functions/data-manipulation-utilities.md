@@ -144,7 +144,7 @@ Be sure to `keep()` the instance of IndexGenerator in the relevant hook or an _A
 e.g:`keep(custom_idx = data_utils.IndexGenerator())`
 {% endhint %}
 
-Be aware that Glyue evaluates the _Value_ Column on the Field Mapping table before the _Field_ column which can result in unintended behavior. e.g.:
+Be aware that Integration Gateway evaluates the _Value_ Column on the Field Mapping table before the _Field_ column which can result in unintended behavior. e.g.:
 
 ```
 if custom_idx == 11;
@@ -153,4 +153,4 @@ Field Path: some.field.path[next(custom_idx)] → some.field.path[12]
 Value Column: f”some_value{custom_idx.last}” → “some_value11“
 ```
 
-\
+<br>

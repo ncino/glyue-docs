@@ -6,7 +6,7 @@ description: >-
 
 # Web Service Endpoints
 
-Glyue supports building web services that execute integrations via user-defined URL paths and methods.  These enables the construction of traditional RESTful web services as explained in the [building-a-restful-crud-web-service](../../tutorials/building-a-restful-crud-web-service/ "mention") guide.
+Integration Gateway supports building web services that execute integrations via user-defined URL paths and methods.  These enables the construction of traditional RESTful web services as explained in the [building-a-restful-crud-web-service](../tutorials/building-a-restful-crud-web-service/ "mention") guide.
 
 {% hint style="warning" %}
 Only URL paths starting with `/api/` or `/rest/` are currently supported.
@@ -21,7 +21,7 @@ To create a web service endpoint for an integration:
 3. Exapnd the _Webservice Endpoints_ section, then click _+ Add Webservice Endpoint_
 4. Fill the fields, then click _Save._
 
-<figure><img src="../../.gitbook/assets/Screenshot 2024-10-09 at 4.38.16 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2024-10-09 at 4.38.16 PM.png" alt=""><figcaption></figcaption></figure>
 
 ## Using a Webservice Endpoint
 

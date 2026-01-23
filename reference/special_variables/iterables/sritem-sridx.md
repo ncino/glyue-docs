@@ -1,11 +1,11 @@
 # sritem/sridx
 
-Provides access to the value (`sritem`) and index (`sridx`) when calling a [service request](../../../glyue-technical-reference/integration_components/servicerequest.md) multiple times using the [`call_for_each`](../../../glyue-technical-reference/integration_components/servicerequest.md#call_for_each) column.
+Provides access to the value (`sritem`) and index (`sridx`) when calling a [service request](../../integration_components/servicerequest.md) multiple times using the [`call_for_each`](../../integration_components/servicerequest.md#call_for_each) column.
 
-These variables are only populated when the `call_for_each` column is set, and are only accessible in the service request's lifecycle hooks and in all columns on its [field mappings](../../../glyue-technical-reference/integration_components/field-mapping.md). They are usually used to configure field mappings when calling a service request repeatedly.
+These variables are only populated when the `call_for_each` column is set, and are only accessible in the service request's lifecycle hooks and in all columns on its [field mappings](../../integration_components/field-mapping.md). They are usually used to configure field mappings when calling a service request repeatedly.
 
 {% hint style="info" %}
-Read more about the `call_for_each` column [here](../../../glyue-technical-reference/integration_components/servicerequest.md#call_for_each).
+Read more about the `call_for_each` column [here](../../integration_components/servicerequest.md#call_for_each).
 {% endhint %}
 
 ```

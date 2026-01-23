@@ -1,10 +1,10 @@
 # Azure Setup
 
 {% hint style="warning" %}
-Before continuing, this user should be an Azure AD admin for the organization, and a SAML Config must be created in the Glyue Environment.
+Before continuing, this user should be an Azure AD admin for the organization, and a SAML Config must be created in the Integration Gateway Environment.
 {% endhint %}
 
-### Create the Glyue Enterprise Application <a href="#azuresso-basicsetuphowto-createtheglyueenterpriseapplication" id="azuresso-basicsetuphowto-createtheglyueenterpriseapplication"></a>
+### Create the Integration Gateway Enterprise Application <a href="#azuresso-basicsetuphowto-createtheglyueenterpriseapplication" id="azuresso-basicsetuphowto-createtheglyueenterpriseapplication"></a>
 
 From the Azure Active Directory overview page, select **Enterprise applications** from the left-hand panel.
 
@@ -30,12 +30,12 @@ Select **SAML**.
 
 <figure><img src="../../.gitbook/assets/794722362.png" alt=""><figcaption></figcaption></figure>
 
-### Provide Glyue’s metadata to Azure <a href="#azuresso-basicsetuphowto-provideglyuesmetadatatoazure" id="azuresso-basicsetuphowto-provideglyuesmetadatatoazure"></a>
+### Provide Integration Gateway's metadata to Azure <a href="#azuresso-basicsetuphowto-provideglyuesmetadatatoazure" id="azuresso-basicsetuphowto-provideglyuesmetadatatoazure"></a>
 
 {% hint style="info" %}
-The Glyue environment SAML metadata will be required for the next step.
+The Integration Gateway environment SAML metadata will be required for the next step.
 
-Glyue always serves its metadata at `https://` (custom domain) `/sso/saml2/metadata/`. If this user is also a Glyue administrator, the metadata URL will be displayed on the **Admin** site under **SAML Configs**.
+Integration Gateway always serves its metadata at `https://` (custom domain) `/sso/saml2/metadata/`. If this user is also a Integration Gateway administrator, the metadata URL will be displayed on the **Admin** site under **SAML Configs**.
 {% endhint %}
 
 At the top, select **Upload metadata file.** Select the appropriate file and upload.
@@ -48,7 +48,7 @@ Click **Save** at the top.
 
 ### Add an email claim <a href="#azuresso-basicsetuphowto-addanemailclaim" id="azuresso-basicsetuphowto-addanemailclaim"></a>
 
-We need to add a claim to the SAML configuration in Azure, so that the user’s email address comes over to Glyue in a field titled “email” instead of something else.
+We need to add a claim to the SAML configuration in Azure, so that the user’s email address comes over to Integration Gateway in a field titled “email” instead of something else.
 
 On the application **SAML-based Sign-on** page, in section **2 Attributes & Claims** click **Edit**.
 
@@ -64,7 +64,7 @@ Enter `email` in the **Name** field. For **Source Attribute** select `user.mail`
 
 Depending on the organization’s Azure configuration, the user email field name may differ.
 
-### Get Azure SAML metadata for Glyue <a href="#azuresso-basicsetuphowto-getazuresamlmetadataforglyue" id="azuresso-basicsetuphowto-getazuresamlmetadataforglyue"></a>
+### Get Azure SAML metadata for Integration Gateway <a href="#azuresso-basicsetuphowto-getazuresamlmetadataforglyue" id="azuresso-basicsetuphowto-getazuresamlmetadataforglyue"></a>
 
 On the application **SAML-based Sign-on** page, in section **3** under **SAML Certificates** download the **Federation Metadata XML**.
 
@@ -72,10 +72,10 @@ On the application **SAML-based Sign-on** page, in section **3** under **SAML Ce
 
 Alternatively, grab the **App Federation Metadata Url** instead of downloading the file.
 
-This will be needed on the Glyue side, to add Azure as an IdP. If this user is not a Glyue admin, please provide the file/URL to a Sandbox Banking employee.
+This will be needed on the Integration Gateway side, to add Azure as an IdP. If this user is not a Integration Gateway admin, please provide the file/URL to a Sandbox Banking employee.
 
 {% hint style="warning" %}
 ### Lastly… <a href="#azuresso-basicsetuphowto-lastly..." id="azuresso-basicsetuphowto-lastly..."></a>
 
-Don’t forget to assign users or groups to the new application- otherwise they won’t be able to authenticate with Glyue via SSO.
+Don’t forget to assign users or groups to the new application- otherwise they won’t be able to authenticate with Integration Gateway via SSO.
 {% endhint %}

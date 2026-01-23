@@ -2284,7 +2284,7 @@ table.confluenceTable td.confluenceTd[data-highlight-colour="\#ffffff"] {
 }
 table.confluenceTable th.confluenceTh[data-highlight-colour="\#bf2600"],
 table.confluenceTable td.confluenceTd[data-highlight-colour="\#bf2600"] {
-    background-color: var(--ds-background-accent-red-bolder, #BF2600);
+    background-color: var(--ds-background-accent-red-bolder #BF2600);
 }
 table.confluenceTable th.confluenceTh[data-highlight-colour="\#de350b"],
 table.confluenceTable td.confluenceTd[data-highlight-colour="\#de350b"] {
@@ -3349,7 +3349,7 @@ body.content-type-blogpost #main-header {
 .more-link-container {
     margin-top: 10px;
     padding-top: 7px;
-    border-top: 1px solid var(--ds-border, #ccc);
+    border-top: 1px solid #ccc;
 }
 
 .recently-updated.macro-blank-experience {

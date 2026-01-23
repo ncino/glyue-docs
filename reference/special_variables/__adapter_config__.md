@@ -8,9 +8,7 @@ Exposes properties of an adapter config to be overridden using field mappings or
 Overrides must occur during the `before_prepare_request_hook` or later. See the [full service request hook lifecycle order here](../integration-lifecycle.md#service-request-overview).
 {% endhint %}
 
-Values set on the `adapter_config` object will be used for the duration of that service request, in place of the original value set on the adapter config,  for the duration of the Service Request.&#x20;
-
-Subsequent service requests that use the same system/adapter will revert to using the original value set on the adapter config.
+A service request's payload may optionally have an  `__adapter_config__` field added to it. When present, the keys and values of the  `__adapter_config__` dictionary override the corresponding entries in the adapter config that would normally be used.
 
 {% hint style="warning" %}
 Values stored within Field Mappings do not have the same encryption methods as fields set directly on adapter configs. &#x20;
@@ -18,8 +16,21 @@ Values stored within Field Mappings do not have the same encryption methods as f
 **Do not put sensitive information, including API secrets / passwords, in field mappings or lifecycle hooks.**
 {% endhint %}
 
-```
-__adapter_config__.username = "temporary_username"
+The `__adapter_config__` field can either be set directly on the payload in a hook:
 
-__adapter_config__.host = "other.website.com"
+```
+my_service_request.payload.__adapter_config__ = {
+    "username" : "override_username",
+    "host" : "other.website.com"
+}
+```
+
+Or equivalently, individual fieldmappings can be created like below
+
+```
+FIELD: __adapter_config__.username
+VALUE: "temporary_username"
+
+FIELD: __adapter_config__.host
+VALUE: "other.website.com"
 ```

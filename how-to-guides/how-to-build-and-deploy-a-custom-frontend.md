@@ -2,13 +2,13 @@
 
 ## What is a Frontend?
 
-Frontends are lightweight applications hosted on Glyue. They can be used to support a wide range of use cases, including creating dashboards, giving easy access to run integrations, or simply as a fast way to host an internal application.
+Frontends are lightweight applications hosted on Integration Gateway. They can be used to support a wide range of use cases, including creating dashboards, giving easy access to run integrations, or simply as a fast way to host an internal application.
 
 ## Accessing a Frontend
 
-Frontends can be given custom subaddresses on your Glyue domain (e.g. `glyueprod.examplebank.sandboxbanking.com/frontends/example_dashboard`) making them easy to bookmark, link, and distribute.
+Frontends can be given custom subaddresses on your Integration Gateway domain (e.g. `glyueprod.examplebank.sandboxbanking.com/frontends/example_dashboard`) making them easy to bookmark, link, and distribute.
 
-All Frontends have built-in Glyue authentication; users must first log in with their Glyue account before they can load a Frontend.&#x20;
+All Frontends have built-in Integration Gateway authentication; users must first log in with their Integration Gateway account before they can load a Frontend.&#x20;
 
 ## Creating a Frontend
 
@@ -18,7 +18,7 @@ Frontends require a file named `index.html` to be present, which will be used as
 
 <figure><img src="../.gitbook/assets/Screenshot 2024-07-15 at 4.51.27 PM.png" alt=""><figcaption><p>Create a Frontend by giving it a name, path, and uploading the .zip</p></figcaption></figure>
 
-For details on more advanced Frontend features and sample code snippest, see the [reference documentation](../glyue-platform-reference/frontends.md).
+For details on more advanced Frontend features and sample code snippest, see the [reference documentation](../integration-gateway-platform-reference/frontends.md).
 
 ## Editing a Frontend
 

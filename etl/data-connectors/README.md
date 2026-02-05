@@ -21,3 +21,23 @@ A connector actually contains two sets of credentials—one for development purp
 {% content-ref url="hubspot.md" %}
 [hubspot.md](hubspot.md)
 {% endcontent-ref %}
+
+{% content-ref url="salesforce.md" %}
+[salesforce.md](salesforce.md)
+{% endcontent-ref %}
+
+{% content-ref url="creatio.md" %}
+[creatio.md](creatio.md)
+{% endcontent-ref %}
+
+{% content-ref url="postgresql.md" %}
+[postgresql.md](postgresql.md)
+{% endcontent-ref %}
+
+{% content-ref url="oracle-sql.md" %}
+[oracle-sql.md](oracle-sql.md)
+{% endcontent-ref %}
+
+{% content-ref url="amazon-s3-bucket.md" %}
+[amazon-s3-bucket.md](amazon-s3-bucket.md)
+{% endcontent-ref %}

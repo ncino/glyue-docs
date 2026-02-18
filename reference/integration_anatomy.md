@@ -28,6 +28,14 @@ Asynchronous integrations are a unique case and return an output immediately mar
 
 Integrations have a success / failure state. The control of this state is flexible and can be triggered at will throughout the life of the integration using the special function [#end](special_functions/#end "mention"). Both service requests and validation rules contain the ability to set the integration into a failure state.
 
+#### Custom Response Type
+
+By default, it's assumed the integration response type is JSON. However, to use a custom response type, the `Content-Type` header can be set via `output.headers`. For example, if the desired response type is XML, `output.headers["Content-Type"]` should be set to `application/xml`.
+
+{% hint style="warning" %}
+If the `Content-Type` header is set, the value of `output.payload` **MUST** be a byte string.
+{% endhint %}
+
 ## Service Requests
 
 The building blocks of an integration. Service requests are fired off in order to perform operations with connected systems. Each service is associated with an adapter creating a call to the service using the provided adapter configs. Services include external API calls and internal file transformations.

@@ -223,20 +223,11 @@ Pull the latest changes from the remote repository.
 | ------------ | --------- | ------------------- | -------------- |
 | 1            | args      | \['origin', 'main'] | list           |
 
-## Security Considerations <a href="#gitadapter-securityconsiderations" id="gitadapter-securityconsiderations"></a>
+## Important Notes <a href="#gitadapter-importantnotes" id="gitadapter-importantnotes"></a>
 
-- **Path Traversal Protection**: The Repo Base Path is validated to ensure it resolves to a location within the adapter's repository workspace (`adapterfiles/git/`). Any attempt to configure a path that would resolve outside this workspace will result in configuration errors.
-- **Single Repository Per Config**: Each adapter config instance operates on exactly one repository path. This prevents accidental or malicious cross-repository operations.
-- **Credential Storage**: Remote authentication credentials (Username/Password) are stored encrypted in the Adapter Config. Use personal access tokens rather than passwords when possible.
-- **Sandboxed Operations**: All Git operations are confined to the adapter's repository workspace to prevent unauthorized filesystem access.
-- **HTTPS Only**: The adapter supports HTTPS authentication for remote operations. SSH authentication is not currently supported.
-- **Timeouts**: Remote operations are subject to configurable timeouts to prevent indefinite hangs on network issues.
-
-## Additional Notes <a href="#gitadapter-additionalnotes" id="gitadapter-additionalnotes"></a>
-
-- The Git binary must be installed and available on the system PATH for the adapter to function.
-- Each adapter config operates on a single repository specified in the Repo Base Path field. To work with multiple repositories, create multiple adapter config instances.
-- The Repo Base Path is required and must resolve to a location within the adapter's repository workspace.
-- The adapter uses GitPython internally but executes the actual `git` command-line binary for all operations.
-- Commit author and committer identity can be set at the adapter config level (applies to all operations) or overridden per-request via the `env` field mapping.
+- The Repo Base Path is validated to ensure it resolves to a location within the adapter's repository workspace (`adapterfiles/git/`). Any attempt to configure a path that would resolve outside this workspace will result in configuration errors.
+- Each adapter config instance operates on exactly one repository path. This prevents accidental or malicious cross-repository operations.
+- Remote authentication credentials (Username/Password) are stored encrypted in the Adapter Config. Use personal access tokens rather than passwords when possible.
+- The adapter supports HTTPS authentication for remote operations. SSH authentication is not currently supported.
+- The Git binary must be installed and available on the system PATH for the adapter to function (which is true of all nCino-hosted IG environments).
 - The adapter automatically creates necessary directory structures when cloning or initializing repositories.

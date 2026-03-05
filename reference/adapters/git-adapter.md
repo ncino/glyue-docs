@@ -8,7 +8,7 @@ All Git operations are executed within a sandboxed directory structure under `ad
 
 | Field                      | Description                                                                                                                                                                                                                                                 | Example                               |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------- |
-| `Repo Base Path`           | OPTIONAL \| Relative subdirectory within the adapter's working directory (`adapterfiles/git/`) under which repositories are cloned or initialized. If not specified, repositories are managed directly in the working directory.                            | `myorg/repos`                         |
+| `Repo Base Path`           | REQUIRED \| Relative path to the repository within the adapter's repository workspace (`adapterfiles/git/`). All Git operations will be performed in this directory. The path must resolve to a location within the adapter's repository workspace. Each adapter config instance operates on a single repository at this path. | `myorg/myrepo`                        |
 | `Default Author Name`      | OPTIONAL \| Default author name for commits. This value is used for `GIT_AUTHOR_NAME` and `GIT_COMMITTER_NAME` environment variables if not otherwise specified.                                                                                           | `Integration Gateway`                 |
 | `Default Author Email`     | OPTIONAL \| Default author email for commits. This value is used for `GIT_AUTHOR_EMAIL` and `GIT_COMMITTER_EMAIL` environment variables if not otherwise specified.                                                                                        | `integrations@example.com`            |
 | `Username`                 | OPTIONAL \| Username for HTTPS remote authentication. Used in conjunction with Password for authenticating with remote Git servers.                                                                                                                         | `git-user`                            |
@@ -65,7 +65,9 @@ The Git adapter supports the following Git commands, organized by category:
 
 ## Field Mappings <a href="#gitadapter-fieldmappings" id="gitadapter-fieldmappings"></a>
 
-<table><thead><tr><th>Field</th><th>Description</th><th>Example</th></tr></thead><tbody><tr><td><code>repo_path</code></td><td><p>OPTIONAL for most commands | <code>str</code> | Relative path to the repository within the configured base path.</p><p>For repository-scoped commands (add, commit, push, etc.), this specifies which repository to operate on. If not provided, the adapter uses the base path.</p><p>Not applicable for <code>clone</code> (uses target from args) or <code>init</code> (uses args or defaults to base path).</p></td><td><code>'myrepo'</code></td></tr><tr><td><code>args</code></td><td><p>REQUIRED for some commands | <code>list</code> | Positional arguments for the Git command.</p><ul><li>For <code>clone</code>: First element MUST be the remote URL. Optional second element is the target directory name.</li><li>For <code>init</code>: Optional directory name to initialize.</li><li>For <code>add</code>: File paths or patterns to add (e.g., <code>['.']</code> for all files).</li><li>For <code>commit</code>, <code>branch</code>, <code>checkout</code>, etc.: Command-specific positional arguments.</li></ul></td><td><p><code>['https://github.com/user/repo.git']</code> (clone)</p><p><code>['.']</code> (add all files)</p><p><code>['main']</code> (checkout branch)</p></td></tr><tr><td><code>flags</code></td><td><p>OPTIONAL | <code>list</code> | Boolean flags to pass to the Git command.</p><p>Each element should be a complete flag string (e.g., <code>--all</code>, <code>-f</code>).</p><p>Common flags:</p><ul><li><code>--all</code> - Apply to all (context-dependent)</li><li><code>--force</code> or <code>-f</code> - Force the operation</li><li><code>--quiet</code> or <code>-q</code> - Suppress output</li><li><code>--verbose</code> or <code>-v</code> - Verbose output</li></ul></td><td><code>['--all', '--verbose']</code></td></tr><tr><td><code>kwargs</code></td><td><p>OPTIONAL | <code>dict</code> | Key-value pairs representing Git options that take values.</p><p>Each key should be the option flag (including dashes), and the value is the option's argument.</p><p>Common options:</p><ul><li><code>--message</code> or <code>-m</code> - Commit message</li><li><code>--branch</code> or <code>-b</code> - Branch name</li><li><code>--author</code> - Author name and email</li><li><code>--depth</code> - Clone depth (for shallow clones)</li></ul><p>Hyphens do not work with <code>dot.notation</code> so please use <code>['bracket-notation']</code> for keys.</p></td><td><pre><code>{
+All Git operations are performed on the repository configured in the adapter config's `Repo Base Path` field. There is no per-request repository selection.
+
+<table><thead><tr><th>Field</th><th>Description</th><th>Example</th></tr></thead><tbody><tr><td><code>args</code></td><td><p>REQUIRED for some commands | <code>list</code> | Positional arguments for the Git command.</p><ul><li>For <code>clone</code>: First element MUST be the remote URL. The repository will be cloned into the configured Repo Base Path.</li><li>For <code>add</code>: File paths or patterns to add (e.g., <code>['.']</code> for all files).</li><li>For <code>commit</code>, <code>branch</code>, <code>checkout</code>, <code>push</code>, <code>pull</code>, etc.: Command-specific positional arguments.</li></ul></td><td><p><code>['https://github.com/user/repo.git']</code> (clone)</p><p><code>['.']</code> (add all files)</p><p><code>['main']</code> (checkout branch)</p><p><code>['origin', 'main']</code> (push/pull)</p></td></tr><tr><td><code>flags</code></td><td><p>OPTIONAL | <code>list</code> | Boolean flags to pass to the Git command.</p><p>Each element should be a complete flag string (e.g., <code>--all</code>, <code>-f</code>).</p><p>Common flags:</p><ul><li><code>--all</code> - Apply to all (context-dependent)</li><li><code>--force</code> or <code>-f</code> - Force the operation</li><li><code>--quiet</code> or <code>-q</code> - Suppress output</li><li><code>--verbose</code> or <code>-v</code> - Verbose output</li></ul></td><td><code>['--all', '--verbose']</code></td></tr><tr><td><code>kwargs</code></td><td><p>OPTIONAL | <code>dict</code> | Key-value pairs representing Git options that take values.</p><p>Each key should be the option flag (including dashes), and the value is the option's argument.</p><p>Common options:</p><ul><li><code>--message</code> or <code>-m</code> - Commit message</li><li><code>--branch</code> or <code>-b</code> - Branch name</li><li><code>--author</code> - Author name and email</li><li><code>--depth</code> - Clone depth (for shallow clones)</li></ul><p>Hyphens do not work with <code>dot.notation</code> so please use <code>['bracket-notation']</code> for keys.</p></td><td><pre><code>{
   '--message': 'Initial commit',
   '--author': 'Bot &lt;bot@example.com&gt;'
 }
@@ -111,7 +113,7 @@ Clone a repository from GitHub into the adapter's working directory.
 
 ### Example 2: Clone with Shallow Depth <a href="#gitadapter-example2clonewithshallowdepth" id="gitadapter-example2clonewithshallowdepth"></a>
 
-Clone only the most recent commit (shallow clone) into a specific directory.
+Clone only the most recent commit (shallow clone) from a specific branch. The repository will be cloned into the path configured in the adapter's Repo Base Path.
 
 | **System** | **Service Name** | **Formula Variable** |
 | ---------- | ---------------- | -------------------- |
@@ -119,14 +121,14 @@ Clone only the most recent commit (shallow clone) into a specific directory.
 
 #### Field Mappings: <a href="#gitadapter-fieldmappings2" id="gitadapter-fieldmappings2"></a>
 
-| **Sequence** | **Field** | **Value**                                            | **Value Type** |
-| ------------ | --------- | ---------------------------------------------------- | -------------- |
-| 1            | args      | \['https://github.com/example/repo.git', 'myrepo']   | list           |
-| 2            | kwargs    | {'--depth': '1', '--branch': 'main'}                 | dict           |
+| **Sequence** | **Field** | **Value**                                | **Value Type** |
+| ------------ | --------- | ---------------------------------------- | -------------- |
+| 1            | args      | \['https://github.com/example/repo.git'] | list           |
+| 2            | kwargs    | {'--depth': '1', '--branch': 'main'}     | dict           |
 
 ### Example 3: Check Repository Status <a href="#gitadapter-example3checkrepositorystatus" id="gitadapter-example3checkrepositorystatus"></a>
 
-Check the working tree status of a repository.
+Check the working tree status of the configured repository.
 
 | **System** | **Service Name** | **Formula Variable** |
 | ---------- | ---------------- | -------------------- |
@@ -134,9 +136,7 @@ Check the working tree status of a repository.
 
 #### Field Mappings: <a href="#gitadapter-fieldmappings3" id="gitadapter-fieldmappings3"></a>
 
-| **Sequence** | **Field**   | **Value** | **Value Type** |
-| ------------ | ----------- | --------- | -------------- |
-| 1            | repo\_path  | 'myrepo'  | str            |
+No field mappings required for this command. The `status` command operates on the configured repository.
 
 ### Example 4: Add Files and Commit <a href="#gitadapter-example4addfilesandcommit" id="gitadapter-example4addfilesandcommit"></a>
 
@@ -150,10 +150,9 @@ Stage all changes and create a commit with a message.
 
 #### Field Mappings: <a href="#gitadapter-fieldmappings4a" id="gitadapter-fieldmappings4a"></a>
 
-| **Sequence** | **Field**  | **Value** | **Value Type** |
-| ------------ | ---------- | --------- | -------------- |
-| 1            | repo\_path | 'myrepo'  | str            |
-| 2            | args       | \['.']    | list           |
+| **Sequence** | **Field** | **Value** | **Value Type** |
+| ------------ | --------- | --------- | -------------- |
+| 1            | args      | \['.']    | list           |
 
 #### Service Request 2 - Commit:
 
@@ -163,10 +162,9 @@ Stage all changes and create a commit with a message.
 
 #### Field Mappings: <a href="#gitadapter-fieldmappings4b" id="gitadapter-fieldmappings4b"></a>
 
-| **Sequence** | **Field**  | **Value**                                      | **Value Type** |
-| ------------ | ---------- | ---------------------------------------------- | -------------- |
-| 1            | repo\_path | 'myrepo'                                       | str            |
-| 2            | kwargs     | {'--message': 'Automated update from Gateway'} | dict           |
+| **Sequence** | **Field** | **Value**                                      | **Value Type** |
+| ------------ | --------- | ---------------------------------------------- | -------------- |
+| 1            | kwargs    | {'--message': 'Automated update from Gateway'} | dict           |
 
 ### Example 5: Push Changes to Remote <a href="#gitadapter-example5pushchangestoremote" id="gitadapter-example5pushchangestoremote"></a>
 
@@ -178,10 +176,9 @@ Push committed changes to a remote repository. Requires Username and Password co
 
 #### Field Mappings: <a href="#gitadapter-fieldmappings5" id="gitadapter-fieldmappings5"></a>
 
-| **Sequence** | **Field**  | **Value** | **Value Type** |
-| ------------ | ---------- | --------- | -------------- |
-| 1            | repo\_path | 'myrepo'  | str            |
-| 2            | args       | \['origin', 'main'] | list           |
+| **Sequence** | **Field** | **Value**           | **Value Type** |
+| ------------ | --------- | ------------------- | -------------- |
+| 1            | args      | \['origin', 'main'] | list           |
 
 ### Example 6: Create a New Branch <a href="#gitadapter-example6createanewbranch" id="gitadapter-example6createanewbranch"></a>
 
@@ -193,11 +190,10 @@ Create and checkout a new branch.
 
 #### Field Mappings: <a href="#gitadapter-fieldmappings6" id="gitadapter-fieldmappings6"></a>
 
-| **Sequence** | **Field**  | **Value**            | **Value Type** |
-| ------------ | ---------- | -------------------- | -------------- |
-| 1            | repo\_path | 'myrepo'             | str            |
-| 2            | flags      | \['-b']              | list           |
-| 3            | args       | \['feature-branch']  | list           |
+| **Sequence** | **Field** | **Value**           | **Value Type** |
+| ------------ | --------- | ------------------- | -------------- |
+| 1            | flags     | \['-b']             | list           |
+| 2            | args      | \['feature-branch'] | list           |
 
 ### Example 7: Configure Repository <a href="#gitadapter-example7configurerepository" id="gitadapter-example7configurerepository"></a>
 
@@ -209,10 +205,9 @@ Set repository-level configuration (e.g., user name for commits).
 
 #### Field Mappings: <a href="#gitadapter-fieldmappings7" id="gitadapter-fieldmappings7"></a>
 
-| **Sequence** | **Field**  | **Value**                | **Value Type** |
-| ------------ | ---------- | ------------------------ | -------------- |
-| 1            | repo\_path | 'myrepo'                 | str            |
-| 2            | args       | \['user.name', 'Bot User'] | list           |
+| **Sequence** | **Field** | **Value**                  | **Value Type** |
+| ------------ | --------- | -------------------------- | -------------- |
+| 1            | args      | \['user.name', 'Bot User'] | list           |
 
 ### Example 8: Pull Latest Changes <a href="#gitadapter-example8pulllatestchanges" id="gitadapter-example8pulllatestchanges"></a>
 
@@ -224,22 +219,24 @@ Pull the latest changes from the remote repository.
 
 #### Field Mappings: <a href="#gitadapter-fieldmappings8" id="gitadapter-fieldmappings8"></a>
 
-| **Sequence** | **Field**  | **Value** | **Value Type** |
-| ------------ | ---------- | --------- | -------------- |
-| 1            | repo\_path | 'myrepo'  | str            |
-| 2            | args       | \['origin', 'main'] | list           |
+| **Sequence** | **Field** | **Value**           | **Value Type** |
+| ------------ | --------- | ------------------- | -------------- |
+| 1            | args      | \['origin', 'main'] | list           |
 
 ## Security Considerations <a href="#gitadapter-securityconsiderations" id="gitadapter-securityconsiderations"></a>
 
+- **Path Traversal Protection**: The Repo Base Path is validated to ensure it resolves to a location within the adapter's repository workspace (`adapterfiles/git/`). Any attempt to configure a path that would resolve outside this workspace will result in configuration errors.
+- **Single Repository Per Config**: Each adapter config instance operates on exactly one repository path. This prevents accidental or malicious cross-repository operations.
 - **Credential Storage**: Remote authentication credentials (Username/Password) are stored encrypted in the Adapter Config. Use personal access tokens rather than passwords when possible.
-- **Sandboxed Operations**: All Git operations are confined to the `adapterfiles/git/` directory structure to prevent unauthorized filesystem access.
+- **Sandboxed Operations**: All Git operations are confined to the adapter's repository workspace to prevent unauthorized filesystem access.
 - **HTTPS Only**: The adapter supports HTTPS authentication for remote operations. SSH authentication is not currently supported.
 - **Timeouts**: Remote operations are subject to configurable timeouts to prevent indefinite hangs on network issues.
 
 ## Additional Notes <a href="#gitadapter-additionalnotes" id="gitadapter-additionalnotes"></a>
 
 - The Git binary must be installed and available on the system PATH for the adapter to function.
-- Repository paths are always relative to the adapter's working directory (`<BASE_DIR>/adapterfiles/git/` plus optional `repo_base_path`).
+- Each adapter config operates on a single repository specified in the Repo Base Path field. To work with multiple repositories, create multiple adapter config instances.
+- The Repo Base Path is required and must resolve to a location within the adapter's repository workspace.
 - The adapter uses GitPython internally but executes the actual `git` command-line binary for all operations.
 - Commit author and committer identity can be set at the adapter config level (applies to all operations) or overridden per-request via the `env` field mapping.
 - The adapter automatically creates necessary directory structures when cloning or initializing repositories.

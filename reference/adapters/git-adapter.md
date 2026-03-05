@@ -4,7 +4,7 @@ The Git adapter enables Integration Gateway to perform version control operation
 
 All Git operations are executed within a sandboxed directory structure under `adapterfiles/git/` to ensure isolation and security.
 
-## AdapterConfigGit <a href="#gitadapter-adapterconfiggit" id="gitadapter-adapterconfiggit"></a>
+## Adapter Config <a href="#gitadapter-adapterconfiggit" id="gitadapter-adapterconfiggit"></a>
 
 | Field                      | Description                                                                                                                                                                                                                                                 | Example                               |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------- |

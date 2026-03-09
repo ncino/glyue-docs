@@ -40,7 +40,7 @@ This page tracks features, bug fixes, and other improvements included in each In
 
 ### Fixes
 
-* **Bugfix**: MCP integration search now works with service requests and field mappings
+* MCP integration search now works with service requests and field mappings
 * Multiple performance, visibility, and usability enhancements
 
 <details>

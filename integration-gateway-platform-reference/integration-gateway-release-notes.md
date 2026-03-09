@@ -6,14 +6,14 @@ This page tracks features, bug fixes, and other improvements included in each In
 
 ### New Features
 
-* **Git Adapter** — Introduces a new Git adapter
-* **BuildHelper: Fiserv Optis** — Adds BuildHelper support for Fiserv Optis
-* **Join Node (ETL)** — Adds a new JOIN node to the workflow builder, enabling more complex workflows
-* **Timezone Support** — Adds timezone support to the integration scheduler
-* **Integration Version Manager** — Provides a new version deployment mechanism for integrations and integration components
-* **SymXchange Adapter** — Supports the new "versionless" URL scheme
-* **Autocomplete** — Improves tab completion
-* **AI Code Completion** — Switches the build page backend from OpenAI to Anthropic
+* **Git Adapter**: Introduces a new Git adapter
+* **BuildHelper: Fiserv Optis**: Adds BuildHelper support for Fiserv Optis
+* **Join Node (ETL)**: Adds a new JOIN node to the workflow builder, which enables more complex workflows
+* **Timezone Support**: Adds timezone support to the integration scheduler
+* **Integration Version Manager**: Provides a new version deployment mechanism for integrations and integration components
+* **SymXchange Adapter**: Supports the new "versionless" URL scheme
+* **Autocomplete**: Improves tab completion
+* **AI Code Completion**: Switches the build page backend from OpenAI to Anthropic
 
 ### MCP
 

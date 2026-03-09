@@ -147,3 +147,7 @@
 * [Run History](etl/run-history.md)
 * [Scheduler](etl/scheduler.md)
 * [Value Mappings](etl/value-mappings.md)
+
+## Release Notes
+
+* [Release Notes](release-notes/README.md)

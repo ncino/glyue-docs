@@ -127,6 +127,7 @@
 * [Admin Components](integration-gateway-platform-reference/integration_configuration.md)
 * [Logging](integration-gateway-platform-reference/logging.md)
 * [Buildhelper](integration-gateway-platform-reference/buildhelper.md)
+* [Integration Gateway Release Notes](integration-gateway-platform-reference/integration-gateway-release-notes.md)
 
 ## ETL
 
@@ -147,3 +148,4 @@
 * [Run History](etl/run-history.md)
 * [Scheduler](etl/scheduler.md)
 * [Value Mappings](etl/value-mappings.md)
+

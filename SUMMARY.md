@@ -114,6 +114,9 @@
 
 ## Integration Gateway Platform Reference
 
+* [MCP Server](integration-gateway-platform-reference/mcp-server.md)
+  * [Tools Reference](integration-gateway-platform-reference/mcp-server/tools-reference.md)
+  * [Permissions and Security](integration-gateway-platform-reference/mcp-server/permissions-and-security.md)
 * [Banking Core Connectivity Guide](integration-gateway-platform-reference/banking-core-connectivity-guide.md)
 * [Authentication](integration-gateway-platform-reference/authentication.md)
 * [Permissions](integration-gateway-platform-reference/permissions/README.md)
@@ -127,9 +130,6 @@
 * [Admin Components](integration-gateway-platform-reference/integration_configuration.md)
 * [Logging](integration-gateway-platform-reference/logging.md)
 * [Buildhelper](integration-gateway-platform-reference/buildhelper.md)
-* [MCP Server](integration-gateway-platform-reference/mcp-server.md)
-  * [Tools Reference](integration-gateway-platform-reference/mcp-server/tools-reference.md)
-  * [Permissions and Security](integration-gateway-platform-reference/mcp-server/permissions-and-security.md)
 * [Integration Gateway Release Notes](integration-gateway-platform-reference/integration-gateway-release-notes.md)
 
 ## ETL

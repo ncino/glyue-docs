@@ -140,40 +140,6 @@ Deletes an integration or component from Integration Gateway. The AI assistant m
 
 ---
 
-### deployed_integrations
-
-> **nCino internal only.** This tool is available only to nCino employees and does not appear for external users.
-
-Searches and retrieves deployed integrations.
-
-**Actions:**
-
-- `search`: Search deployed integrations
-- `get_integration`: Get full integration with service requests and payloads
-- `get_service_request`: Get full service request with payloads
-
-**Returns:** Deployed integration data based on action. Search returns matching integrations with metadata. Other actions return full integration or service request data with payloads.
-
----
-
-### system_documentation
-
-> **nCino internal only.** This tool is available only to nCino employees and does not appear for external users.
-
-Searches and retrieves Integration Gateway system documentation.
-
-**Actions:**
-
-- `search`: Search documentation (the system returns metadata only, not content)
-- `get_page`: Get full documentation page content
-
-**Behavior:**
-
-- The search action provides only metadata
-- Use `get_page` with the `page_id` from search results to retrieve full content
-
----
-
 ### query_buildhelper
 
 Queries the Build Helper service for integration building assistance. Use this tool to discover available services, adapters, and pre-built field mapping templates.

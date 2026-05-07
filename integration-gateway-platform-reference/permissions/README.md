@@ -1,6 +1,6 @@
 # Permissions
 
-An Integration Gateway user's permissions a governed by three concepts:
+Three concepts govern an Integration Gateway user's permissions:
 
 * [User Type (Standard, Staff, Service Account)](./#user-type)
 * [User Permissions](./#user-permissions)
@@ -22,19 +22,19 @@ An Integration Gateway user's permissions a governed by three concepts:
 | Invite           | --                   | :white\_check\_mark: |
 | Admin (settings) | --                   | :white\_check\_mark: |
 
-A **Standard** Integration Gateway user account is appropriate for everyday users who are involved in the building, maintenance, or monitoring of integrations.&#x20;
+A **Standard** Integration Gateway user account is appropriate for everyday users who build, maintain, or monitor integrations.&#x20;
 
 A **Staff** Integration Gateway user is equivalent to a system administrator. These users have access to additional pages, notably the _Invite_ page, which allows them to invite additional Standard and Staff users into Integration Gateway, and the _Admin_ page, which controls settings for the Integration Gateway environment.
 
-A **Service Account** is an account created to manage third-party system access to integrations on Integration Gateway. A Service Account is only meant to execute integrations, and cannot log into the Integration Gateway UI, view or edit integrations, or invite other users. Learn more about service accounts here.
+A **Service Account** manages third-party system access to integrations on Integration Gateway. A Service Account is only meant to execute integrations, and cannot log into the Integration Gateway UI, view or edit integrations, or invite other users. Learn more about service accounts here.
 
 ### User Permissions
 
-Both Standard and Staff users can have their abilities augmented by being granted permissions specific to a particular action. These permissions must be granted by a member of Sandbox staff — reach out to support@sandboxbanking.com for help.
+Both Standard and Staff users can have their abilities augmented by being granted permissions specific to a particular action. A Staff user can manage these permissions from the Admin portal.
 
 ### Integration Permissions
 
-Each user — both Standard and Staff — must be explicitly granted permission to access integrations. This must be done for each integration. Typically this is handled by your Sandbox Solution Engineer — reach out to support@sandboxbanking.com for help.
+Each user — both Standard and Staff — must be explicitly granted permission to access integrations. This must be done for each integration. A Staff user can assign integration permissions to individual users from the Admin portal, or assign them to a group using Group Integration Permissions.
 
 Integrations have four separate permission types: Read, Write, Execute, and Debug. By default, the user who creates the integration has all four integration permissions.
 
@@ -45,11 +45,18 @@ Integrations have four separate permission types: Read, Write, Execute, and Debu
 
 ### Group Permissions
 
-Groups may have additional permissions granted to them. Any member of the group automatically receives these permissions when they become a member of a group, and the permissions are revoked if the user is removed from the group.
+Groups allow you to manage permissions for multiple users at once. To create a group:
+
+1. Click your profile icon and select **Admin** to open the Admin portal.
+2. Navigate to **Authentication > Groups** and click **+ Add**.
+3. Enter a name for the group.
+4. Select permissions from the Available permissions list and move them to the Chosen permissions list.
+5. Select users from the Available Users list and move them to the Chosen Users list.
+6. Click **Save**.
+
+Any member of the group automatically receives these permissions when they join, and the system revokes those permissions if you remove the user from the group.
 
 Permissions granted through a group are only additive to any existing permissions a user has.&#x20;
-
-Groups and Group Permissions are typically managed by Sandbox — reach out to support@sandboxbanking.com for help.
 
 ### Permissions Across Environments
 
@@ -65,4 +72,4 @@ Integration Gateway's default policy is:
 
 _\*We recommend restricting Write permissions to the minimum set of users necessary to build the integration._&#x20;
 
-You'll notice no group receives Execution permissions. Integration Gateway's best practice is to restrict execution permissions to a dedicated [service account](service-accounts.md), rather than executing integrations via an employee's Integration Gateway account.
+No group receives Execution permissions. Integration Gateway best practice is to restrict execution permissions to a dedicated [service account](service-accounts.md), rather than execute integrations with an employee's Integration Gateway account.

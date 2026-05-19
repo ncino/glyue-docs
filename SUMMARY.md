@@ -109,6 +109,7 @@
 * [Adapters](reference/adapters/README.md)
   * [Generic HTTP Adapter](reference/adapters/generic-http-adapter.md)
   * [Email SMTP Adapter](reference/adapters/email-smtp-adapter.md)
+  * [Salesforce Adapter](reference/adapters/salesforce-adapter.md)
 * [Web Service Endpoints](reference/web-service-endpoints.md)
 * [Vault Reference](reference/vault-reference.md)
 
@@ -151,4 +152,3 @@
 * [Run History](etl/run-history.md)
 * [Scheduler](etl/scheduler.md)
 * [Value Mappings](etl/value-mappings.md)
-

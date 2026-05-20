@@ -2,9 +2,33 @@
 
 This page tracks features, bug fixes, and other improvements included in each Integration Gateway release.
 
-## v4.18.0 — March 17th, 2026
+## v4.19.0 — May 2026
 
 ### New Features
+
+* **Custom Adapters**: Build and deploy user-defined Python adapters with custom configuration schemas and file field support
+* **Mapping Progress Dashboard**: Track field mapping completion across service requests with forecast data, target dates, and status breakdowns
+* **Quick Mapping**: Review unmapped fields one at a time through a card-based interface with keyboard shortcuts
+* **Salesforce Bulk API v2.0**: Adds Bulk API 2.0 support to the Salesforce adapter
+* **Equifax Adapter**: Introduces a new Equifax adapter with multi-scope support
+* **Fiserv Optis Adapter**: Introduces a new Fiserv Optis adapter
+* **Join Node (ETL)**: Adds a new JOIN node to the ETL workflow builder
+
+### MCP
+
+* Adds MCP tools for building and managing custom adapters (`custom_adapter_code`, `custom_adapter_config`)
+
+### Improvements
+
+* **CMC Adapter Auth Type 3**: Extends the CMC adapter to support authentication type 3
+* **BuildHelper: Salesforce Bulk API v2.0**: Adds BuildHelper metadata for Salesforce Bulk API v2.0
+* **BuildHelper: jXchange ReST**: Adds BuildHelper metadata for Jack Henry jXchange ReST services
+* **BuildHelper: SymXchange**: Adds BuildHelper metadata for Jack Henry Symitar SymXchange
+* Adds descriptive error messages for adapter configurator permissions
+
+<details>
+
+<summary>v4.18.0 — March 17th, 2026</summary>
 
 * **Git Adapter**: Introduces a new Git adapter
 * **BuildHelper: Fiserv Optis**: Adds BuildHelper support for Fiserv Optis
@@ -13,9 +37,6 @@ This page tracks features, bug fixes, and other improvements included in each In
 * **SymXchange Adapter**: Supports the new "versionless" URL scheme
 * **Autocomplete**: Improves tab completion
 * **AI Code Completion**: Switches the build page backend from OpenAI to Anthropic
-
-### MCP
-
 * Adds a new MCP tool to directly reference BuildHelper adapter metadata
 * Adds a new MCP tool for run history search
 * Adds a new MCP tool to create and edit Frontends
@@ -24,23 +45,16 @@ This page tracks features, bug fixes, and other improvements included in each In
 * MCP admin page can now auto-generate a Claude-compatible configuration
 * Optimizes the MCP Run History tool for reduced context window usage
 * Optimizes the MCP build page read tool for reduced context window usage
-
-### Performance
-
 * Improves dashboard page performance
 * Improves log page performance
 * Improves run history redaction job performance
-
-### Improvements
-
 * BuildHelper button on the build page loads immediately on page load
 * Improves error messages when configuring schedules with insufficient permissions
 * `add_run_label` now ignores empty labels rather than throwing an exception
-
-### Fixes
-
 * MCP integration search now works with service requests and field mappings
 * Multiple performance, visibility, and usability enhancements
+
+</details>
 
 <details>
 

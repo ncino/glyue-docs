@@ -63,6 +63,8 @@
   * [Integration Gateway SAML Config Reference](how-to-guides/how-to-set-up-single-sign-on-sso/integration-gateway-saml-config-reference.md)
 * [How to Install the Integration Gateway App for Zoom Contact Center](how-to-guides/how-to-install-the-integration-gateway-app-for-zoom-contact-center.md)
 * [How to use the Vault](how-to-guides/how-to-use-the-vault.md)
+* [How to Review Field Mappings with Quick Mapping](how-to-guides/how-to-review-field-mappings-with-quick-mapping.md)
+* [How to Track Mapping Progress](how-to-guides/how-to-track-mapping-progress.md)
 
 ## Reference
 

@@ -16,6 +16,8 @@
 | [`query_buildhelper`](#query_buildhelper) | Query integration build assistance | Yes |
 | [`frontend_operations`](#frontend_operations) | Build and manage frontends | No |
 | [`django_admin`](#django_admin) | Manage Integration Gateway admin models | No |
+| [`custom_adapter_code`](#custom_adapter_code) | Build and manage custom adapters | No |
+| [`custom_adapter_config`](#custom_adapter_config) | Create and manage custom adapter configs | No |
 
 ---
 
@@ -201,6 +203,61 @@ Manages Django admin-registered models in Integration Gateway. Use this tool to 
 - The system masks encrypted fields in output
 - The system blocks certain models (for example, GlobalConfig) from access
 - The system caps results at 200 instances per query
+
+---
+
+### custom_adapter_code
+
+> Requires the **can_use_custom_adapters** account permission.
+
+Manages custom adapter code definitions. Custom adapters are user-defined Python classes that inherit from `BaseAdapter`. Each adapter defines a configuration schema specifying the fields its instances accept.
+
+**Actions:**
+
+- `list`: List all adapters. Code is omitted by default; set `include_code` to `true` to include it
+- `get`: Retrieve a single adapter by ID. Includes code by default
+- `create`: Create an adapter. Requires `name` and `code`; optionally accepts `description` and `config_schema`
+- `update`: Update an adapter. Requires `id` plus at least one of `name`, `description`, `code`, or `config_schema`
+- `delete`: Delete an adapter by ID. Cascade-deletes all associated configs
+- `deletion_impact`: Report how many configs the system would cascade-delete
+- `schema_change_impact`: Report warnings for a proposed schema change (added fields, type changes)
+
+**Returns:** Adapter object (ID, name, system, description, config_schema, timestamps, and optionally code) for get/create/update. Count and array for list. Impact details for the impact actions. Success confirmation for delete.
+
+**Behavior:**
+
+- Adapter code must define a `CustomAdapter` class inheriting from `BaseAdapter` with an `execute(self, request)` method. The `validate_config(self)` method is optional
+- Pre-loaded imports: `BaseAdapter`, `AdapterRequest`, `AdapterResponse`, `AdapterFlowController`, `MessageTypes`, `base64`
+- Access config values through `self.config`; file fields are base64 strings and must be decoded before use
+- Schema field types must be one of: `string`, `integer`, `float`, `boolean`, `array`, `object`, `encrypted_string`, `file`
+- Removing schema fields also removes them from all existing configs
+
+---
+
+### custom_adapter_config
+
+> Requires the **can_use_custom_adapters** account permission.
+
+Manages configurations for a custom adapter. Each config stores values matching the parent adapter's schema and represents a specific instance the adapter can run with.
+
+**Actions:**
+
+- `list`: List all configs for an adapter. Requires `code_id`
+- `get`: Retrieve a single config. Requires `code_id` and `config_id`
+- `create`: Create a config. Requires `code_id` and `name`; optionally accepts `active` (defaults to true) and `config_values`
+- `update`: Update a config. Requires `code_id` and `config_id` plus at least one of `name`, `active`, or `config_values`
+- `delete`: Delete a config. Requires `code_id` and `config_id`
+- `validate`: Run validation on all active, validation-enabled configs for the adapter and return results
+- `validation_result`: Return results from the most recent validation run without re-running
+
+**Returns:** Config object (ID, name, active, config_values) for get/create/update. Count and array for list. Results array (config_id, config_name, success, message, timestamp) for validate/validation_result. Success confirmation for delete.
+
+**Behavior:**
+
+- The system coerces values to schema types automatically
+- File fields accept base64 strings up to 1 MB decoded
+- The system masks encrypted and file fields in responses; they cannot be read back
+- Omit encrypted and file fields on update to preserve existing values
 
 ---
 

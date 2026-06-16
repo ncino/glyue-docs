@@ -65,6 +65,7 @@
 * [How to use the Vault](how-to-guides/how-to-use-the-vault.md)
 * [How to Review Field Mappings with Quick Mapping](how-to-guides/how-to-review-field-mappings-with-quick-mapping.md)
 * [How to Track Mapping Progress](how-to-guides/how-to-track-mapping-progress.md)
+* [How to Configure Integration Retry](how-to-guides/how-to-configure-integration-retry.md)
 
 ## Reference
 

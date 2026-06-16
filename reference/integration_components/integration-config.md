@@ -60,6 +60,30 @@ Enables persistence of run history payloads for Integration Run Steps. The [#sto
 
 Number of days to persist Integration Run History Items. After this date run history payloads are deleted permanently. Defaults to 14 days.
 
+### retry\_mode
+
+<mark style="color:yellow;">`string`</mark> - <mark style="color:red;">`required`</mark>
+
+The retry strategy for failed integration runs. Options: `none` (default), `fixed` (Fixed Interval), `exponential` (Exponential Backoff). See [How to Configure Integration Retry](../../how-to-guides/how-to-configure-integration-retry.md) for details.
+
+### retry\_delay\_seconds
+
+<mark style="color:yellow;">`integer`</mark> - <mark style="color:red;">`required`</mark>
+
+The initial delay in seconds before retrying a failed run. Range: 1–600. Default: 5.
+
+### retry\_delay\_jitter
+
+<mark style="color:yellow;">`integer`</mark> - <mark style="color:red;">`required`</mark>
+
+Randomness in seconds added to each retry delay to prevent thundering herd problems. Range: 0–120. Default: 2.
+
+### max\_retries
+
+<mark style="color:yellow;">`integer`</mark> - <mark style="color:red;">`required`</mark>
+
+Maximum number of retry attempts for a failed run. Range: 1–10. Default: 3.
+
 ### engine\_version
 
 Engine version used when running this integration.

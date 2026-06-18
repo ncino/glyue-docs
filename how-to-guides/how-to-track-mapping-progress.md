@@ -18,7 +18,7 @@ To review mapping progress for an integration:
 
 The four forecast cards display these metrics:
 
-- **Project Status** — Whether the integration is on track, ahead of schedule, behind schedule, or past due. The system calculates this from the target date and the configured fields-per-day rate. If you do not set a target date, the status displays as "In Progress."
+- **Project Status** — Whether the integration is on track, ahead of schedule, behind schedule, or past due. The system calculates this from the target date and the configured fields-per-day rate, which only counts weekdays (Monday through Friday). If you do not set a target date, the status displays as "In Progress."
 - **Target Date** — The date the integration should reach completion. If the project is behind schedule, a "Need X/day" indicator shows the daily throughput required to finish on time.
 - **Fields / Day** — The configured daily mapping rate used for forecast calculations.
 - **Fields Left** — How many fields remain out of the total.

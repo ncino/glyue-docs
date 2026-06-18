@@ -2,6 +2,26 @@
 
 This page tracks features, bug fixes, and other improvements included in each Integration Gateway release.
 
+## v4.20.0 — June 2026
+
+### New Features
+
+* **Integration Retry**: Launched configurable Integration Retry, which supports both exponential back-off and fixed interval retry schedules
+* **SDLC Environment Banner**: Added SDLC environment banner to the IG UI in production environments
+
+### Improvements
+
+* **JXChange OAuth 2.0**: Updated JXChange SOAP adapter to use OAuth 2.0 authentication
+* **JXChange WSDL**: Added new WSDL version support for the jXchange adapter
+* **Custom Scheduler**: Replaced Celery with a custom scheduler for improved scheduling reliability
+* **Django 5.2**: Upgraded Django framework to v5.2
+* **Mapping Dashboard**: Improved calculation of Project Status and Fields per Day in the Mapping Dashboard
+
+### Bug Fixes
+
+* Resolved issue where ETL workflow failure emails did not send during validation failures
+* Fixed improper formatting in the View Changes diff display
+
 ## v4.19.0 — May 2026
 
 ### New Features

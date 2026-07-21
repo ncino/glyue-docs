@@ -66,6 +66,7 @@
 * [How to Review Field Mappings with Quick Mapping](how-to-guides/how-to-review-field-mappings-with-quick-mapping.md)
 * [How to Track Mapping Progress](how-to-guides/how-to-track-mapping-progress.md)
 * [How to Configure Integration Retry](how-to-guides/how-to-configure-integration-retry.md)
+* [How to Export an Integration Diagram](how-to-guides/how-to-export-an-integration-diagram.md)
 
 ## Reference
 
@@ -113,11 +114,15 @@
   * [Generic HTTP Adapter](reference/adapters/generic-http-adapter.md)
   * [Email SMTP Adapter](reference/adapters/email-smtp-adapter.md)
   * [Salesforce Adapter](reference/adapters/salesforce-adapter.md)
+  * [Custom Adapters](reference/adapters/custom-adapters/README.md)
+    * [How to authenticate custom adapter requests](reference/adapters/custom-adapters/authenticate-custom-adapter-requests.md)
 * [Web Service Endpoints](reference/web-service-endpoints.md)
 * [Vault Reference](reference/vault-reference.md)
 
 ## Integration Gateway Platform Reference
 
+* [Integration Gateway Workbench](integration-gateway-platform-reference/integration-gateway-workbench/README.md)
+  * [Workbench Node Reference](integration-gateway-platform-reference/integration-gateway-workbench/node-reference.md)
 * [MCP Server](integration-gateway-platform-reference/mcp-server.md)
   * [Tools Reference](integration-gateway-platform-reference/mcp-server/tools-reference.md)
   * [Permissions and Security](integration-gateway-platform-reference/mcp-server/permissions-and-security.md)

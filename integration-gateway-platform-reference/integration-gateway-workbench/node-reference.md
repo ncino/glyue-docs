@@ -51,9 +51,13 @@ The properties panel header reads **Service Request**. The panel displays these 
 * **Notes**
 * **Tags**
 
+### Sub-Service Requests
+
+When a service request contains nested sub-service requests, the node displays them in a selectable table. Each row shows the **Sequence**, **System**, and **Service Name** of a sub-service request. Click a row to select that sub-service request.
+
 ### Hooks
 
-Configured hooks display in a collapsible section, each listed by name:
+The node shows a hook count — for example, "3 hooks" — as a compact summary rather than an expandable list. The properties panel lists the configured hooks by name in a collapsible section:
 
 * **Before Prepare Request Hook**
 * **After Prepare Request Success Hook**

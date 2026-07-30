@@ -32,6 +32,25 @@ A **Service Account** manages third-party system access to integrations on Integ
 
 Both Standard and Staff users can have their abilities augmented by being granted permissions specific to a particular action. A Staff user can manage these permissions from the Admin portal.
 
+### Page Permissions
+
+Every user can access some pages, but Integration Gateway keeps certain pages behind an individual permission. A user without the required permission does not see the page. Grant these permissions to a user or group from the Admin portal.
+
+| Page | Required permission | Notes |
+| --- | --- | --- |
+| Frontends | Can use Frontend | The View Frontend permission also grants access. |
+| Vault | Can use Vault | The View Vault permission also grants access. |
+| Invite | Can use Invite | |
+| Migrate, View Changes | Can use Migrate | A single permission grants access to both pages. |
+| Log | Can use Log | To enable debug logging, a user also needs the Can enable Debug Logging permission. |
+| Shared Modules | Can use Shared Modules | |
+| Custom Adapters | Can use Custom Adapters | |
+
+Two additional permissions govern actions rather than pages:
+
+* **Can use Adapter Configs**: Grants a user access to create, modify, and delete any adapter config.
+* **Can use MCP Run History tool**: Grants the AI agent access to query run histories.
+
 ### Integration Permissions
 
 Each user — both Standard and Staff — must be explicitly granted permission to access integrations. This must be done for each integration. A Staff user can assign integration permissions to individual users from the Admin portal, or assign them to a group using Group Integration Permissions.

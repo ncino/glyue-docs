@@ -2,6 +2,30 @@
 
 This page tracks features, bug fixes, and other improvements included in each Integration Gateway release.
 
+## v4.21.0 — July 2026
+
+### New Features
+
+* **[Integration Gateway Workbench](integration-gateway-workbench/README.md)**: Launched the Integration Gateway Workbench, a visual canvas that displays an integration's components as an interactive node diagram. You can review an integration's full structure directly on the canvas instead of on the Build page. The Workbench is available behind a feature flag. Contact your nCino representative to enable it for your environment.
+  * Navigate the canvas with zoom, pan, and minimap controls
+  * View color-coded, labeled nodes for the Integration, Service Request, Field Mapping, and Validation Rule components
+  * Click any node to open a read-only properties panel that displays its configuration, with an **Open in Build** link to the underlying record
+  * Export integration diagrams as SVG, PNG, or JSON files
+* **ETL Mapping Import**: Added support for importing ETL field mappings directly from CSV or Excel files
+* **SFTP Trust On First Use**: Added Trust On First Use (TOFU) host key verification to the SFTP adapter
+
+### Improvements
+
+* **Integration Permission Bulk Change**: Added a new UI for changing integration permissions in bulk
+* **Mapping Page Edit Access**: Added a mapping-page config setting that controls which users and groups can edit directly on the mapping page
+* **Mapping Page Default Sort**: Updated the mapping page to default to sorting by Field instead of Status
+* **nCino fireCallback**: Updated the nCino `fireCallback` helper to be rate-limit aware
+
+### Bug Fixes
+
+* Resolved an unhelpful 400 error when creating a blank Shared Module
+* Fixed missing log lines in the Corelation KeyBridge adapter
+
 ## v4.20.0 — June 2026
 
 ### New Features

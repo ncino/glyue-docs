@@ -16,7 +16,7 @@ This page tracks features, bug fixes, and other improvements included in each In
 
 ### Bug Fixes
 
-* Resolved an issue where the Dashboard page blocked navigation while it was loading
+* Resolved an issue where the Dashboard page blocked navigation while it loaded
 
 ## v4.21.0 — July 2026
 

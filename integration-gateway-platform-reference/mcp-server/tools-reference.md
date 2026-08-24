@@ -48,7 +48,7 @@ Creates or updates any part of an integration. The system automatically updates 
 - Omit the `id` field to create new components
 - New child components must include a parent ID (`servicerequest_id`, `valuemappingset_id`)
 - Set `create_if_missing` to `true` to create the integration if it does not exist
-- When updating an existing integration, include `last_saved` (from a prior `read_integration` call) to detect merge conflicts; if another user has saved changes since, the request fails with a `merge_conflict` error instead of overwriting them
+- When you update an existing integration, include the `last_saved` timestamp from a prior `read_integration` call to detect merge conflicts. If another user has saved changes since, the request fails with a `merge_conflict` error and does not overwrite them.
 - Merge-conflict detection does not apply to integration creation
 
 ---
@@ -143,7 +143,7 @@ Deletes an integration or component from Integration Gateway. The AI assistant m
 
 - The tool description instructs the AI to request explicit user confirmation before it executes a delete
 - When you delete an integration, the system deletes all of its components (service requests, field mappings, validation rules, value mapping sets, and value mappings)
-- Include `last_saved` (from a prior `read_integration` call) to detect merge conflicts; if another user has saved changes since, the request fails with a `merge_conflict` error instead of deleting stale data
+- Include the `last_saved` timestamp from a prior `read_integration` call to detect merge conflicts. If another user has saved changes since, the request fails with a `merge_conflict` error and does not delete stale data.
 
 ---
 
@@ -170,14 +170,14 @@ Queries the Build Helper service for integration building assistance. Use this t
 
 ### ig_platform_documentation
 
-Searches the Integration Gateway User Docs to answer questions about platform features and usage. Can also retrieve a specific documentation page directly.
+Searches the Integration Gateway User Docs to answer questions about platform features and usage. You can also retrieve a specific documentation page directly.
 
 **Actions:**
 
 - `ask`: Ask a natural-language `question`, optionally with a `goal` for added context
 - `get_page`: Retrieve a specific documentation page by `url`
 
-**Returns:** Relevant documentation content answering the question, or the full content of the requested page.
+**Returns:** Relevant documentation content that answers the question, or the full content of the requested page.
 
 ---
 

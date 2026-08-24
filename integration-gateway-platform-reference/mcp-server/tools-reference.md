@@ -32,7 +32,7 @@ Retrieves the complete or partial structure of an integration. Returns service r
 
 - If you do not specify components, the tool returns all components
 - You can selectively retrieve specific components
-- Each integration includes a `last_saved` timestamp; pass it back on `write_integration` or `delete_integration_component` calls to detect merge conflicts
+- Each integration includes a `last_saved` timestamp. Pass it back on `write_integration` or `delete_integration_component` calls to detect merge conflicts.
 
 ---
 
@@ -40,7 +40,10 @@ Retrieves the complete or partial structure of an integration. Returns service r
 
 Creates or updates any part of an integration. The system automatically updates the integration's last saved timestamp. When you create an integration this way, the system automatically grants full permissions to the creator.
 
-**Returns:** Object with success status, integration details, created_integration flag, detailed changes for each component (created/updated items with old/new values), and warnings array. On a merge conflict, returns `{"success": false, "error": "merge_conflict", "integration_name": ..., "current_last_saved": ..., "message": "Your information is out of date..."}` instead.
+**Returns:** Result varies by scenario:
+
+- **Success**: Object with success status, integration details, created_integration flag, warnings array, and detailed per-component changes with old and new values for created or updated items
+- **Merge conflict**: Object with `success: false`, `error: "merge_conflict"`, integration_name, current_last_saved, and a message stating the integration was changed since the last read
 
 **Behavior:**
 
@@ -137,7 +140,10 @@ Searches and filters run histories for integrations. This tool supports all filt
 
 Deletes an integration or component from Integration Gateway. The AI assistant must ask the user for explicit confirmation before it calls this tool.
 
-**Returns:** Object with success status, integration details, deleted component details, and confirmation message.
+**Returns:** Result varies by scenario:
+
+- **Success**: Object with success status, integration details, deleted component details, and confirmation message
+- **Merge conflict**: Object with `success: false`, `error: "merge_conflict"`, integration_name, current_last_saved, and a message stating the integration was changed since the last read
 
 **Behavior:**
 

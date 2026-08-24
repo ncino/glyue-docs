@@ -2,6 +2,22 @@
 
 This page tracks features, bug fixes, and other improvements included in each Integration Gateway release.
 
+## v4.22.0 — August 2026
+
+### New Features
+
+* **Fiserv XP2 Adapter**: Added support for the Fiserv XP2 core banking system
+* **nCino Mortgage Adapter**: Added a system-specific adapter for the nCino Mortgage solution
+
+### MCP
+
+* Adds an MCP tool for Claude to search the IG User Docs (`ig_platform_documentation`)
+* Adds an MCP overwrite warning for merge conflicts on write tools
+
+### Bug Fixes
+
+* Resolved an issue where the Dashboard page blocked navigation while it loaded
+
 ## v4.21.0 — July 2026
 
 ### New Features
@@ -46,9 +62,9 @@ This page tracks features, bug fixes, and other improvements included in each In
 * Resolved issue where ETL workflow failure emails did not send during validation failures
 * Fixed improper formatting in the View Changes diff display
 
-## v4.19.0 — May 2026
+<details>
 
-### New Features
+<summary>v4.19.0 — May 2026</summary>
 
 * **Custom Adapters**: Build and deploy user-defined Python adapters with custom configuration schemas and file field support
 * **Mapping Progress Dashboard**: Track field mapping completion across service requests with forecast data, target dates, and status breakdowns
@@ -57,18 +73,14 @@ This page tracks features, bug fixes, and other improvements included in each In
 * **Equifax Adapter**: Introduces a new Equifax adapter with multi-scope support
 * **Fiserv Optis Adapter**: Introduces a new Fiserv Optis adapter
 * **Join Node (ETL)**: Adds a new JOIN node to the ETL workflow builder
-
-### MCP
-
 * Adds MCP tools for building and managing custom adapters (`custom_adapter_code`, `custom_adapter_config`)
-
-### Improvements
-
 * **CMC Adapter Auth Type 3**: Extends the CMC adapter to support authentication type 3
 * **BuildHelper: Salesforce Bulk API v2.0**: Adds BuildHelper metadata for Salesforce Bulk API v2.0
 * **BuildHelper: jXchange ReST**: Adds BuildHelper metadata for Jack Henry jXchange ReST services
 * **BuildHelper: SymXchange**: Adds BuildHelper metadata for Jack Henry Symitar SymXchange
 * Adds descriptive error messages for adapter configurator permissions
+
+</details>
 
 <details>
 

@@ -14,6 +14,7 @@
 | [`search_run_histories`](#search_run_histories) | Search and filter run histories | Yes |
 | [`delete_integration_component`](#delete_integration_component) | Delete integrations or components | No |
 | [`query_buildhelper`](#query_buildhelper) | Query integration build assistance | Yes |
+| [`ig_platform_documentation`](#ig_platform_documentation) | Search the IG User Docs | Yes |
 | [`frontend_operations`](#frontend_operations) | Build and manage frontends | No |
 | [`django_admin`](#django_admin) | Manage Integration Gateway admin models | No |
 | [`custom_adapter_code`](#custom_adapter_code) | Build and manage custom adapters | No |
@@ -31,6 +32,7 @@ Retrieves the complete or partial structure of an integration. Returns service r
 
 - If you do not specify components, the tool returns all components
 - You can selectively retrieve specific components
+- Each integration includes a `last_saved` timestamp. Pass it back on `write_integration` or `delete_integration_component` calls to detect merge conflicts.
 
 ---
 
@@ -38,7 +40,10 @@ Retrieves the complete or partial structure of an integration. Returns service r
 
 Creates or updates any part of an integration. The system automatically updates the integration's last saved timestamp. When you create an integration this way, the system automatically grants full permissions to the creator.
 
-**Returns:** Object with success status, integration details, created_integration flag, detailed changes for each component (created/updated items with old/new values), and warnings array.
+**Returns:** Result varies by scenario:
+
+- **Success**: Object with success status, integration details, created_integration flag, warnings array, and detailed per-component changes with old and new values for created or updated items
+- **Merge conflict**: Object with `success: false`, `error: "merge_conflict"`, integration_name, current_last_saved, and a message stating the integration was changed since the last read
 
 **Behavior:**
 
@@ -46,6 +51,8 @@ Creates or updates any part of an integration. The system automatically updates 
 - Omit the `id` field to create new components
 - New child components must include a parent ID (`servicerequest_id`, `valuemappingset_id`)
 - Set `create_if_missing` to `true` to create the integration if it does not exist
+- When you update an existing integration, include the `last_saved` timestamp from a prior `read_integration` call to detect merge conflicts. If another user has saved changes since, the request fails with a `merge_conflict` error and does not overwrite them.
+- Merge-conflict detection does not apply to integration creation
 
 ---
 
@@ -133,12 +140,16 @@ Searches and filters run histories for integrations. This tool supports all filt
 
 Deletes an integration or component from Integration Gateway. The AI assistant must ask the user for explicit confirmation before it calls this tool.
 
-**Returns:** Object with success status, integration details, deleted component details, and confirmation message.
+**Returns:** Result varies by scenario:
+
+- **Success**: Object with success status, integration details, deleted component details, and confirmation message
+- **Merge conflict**: Object with `success: false`, `error: "merge_conflict"`, integration_name, current_last_saved, and a message stating the integration was changed since the last read
 
 **Behavior:**
 
 - The tool description instructs the AI to request explicit user confirmation before it executes a delete
 - When you delete an integration, the system deletes all of its components (service requests, field mappings, validation rules, value mapping sets, and value mappings)
+- Include the `last_saved` timestamp from a prior `read_integration` call to detect merge conflicts. If another user has saved changes since, the request fails with a `merge_conflict` error and does not delete stale data.
 
 ---
 
@@ -160,6 +171,19 @@ Queries the Build Helper service for integration building assistance. Use this t
 2. `list_services_for_adapter` to get services for a specific adapter
 3. `get_field_mapping_sets` to get templates for a service
 4. `get_field_mappings` to get field mappings from a template
+
+---
+
+### ig_platform_documentation
+
+Searches the Integration Gateway User Docs to answer questions about platform features and usage. You can also retrieve a specific documentation page directly.
+
+**Actions:**
+
+- `ask`: Ask a natural-language `question`, optionally with a `goal` for added context
+- `get_page`: Retrieve a specific documentation page by `url`
+
+**Returns:** Relevant documentation content that answers the question, or the full content of the requested page.
 
 ---
 

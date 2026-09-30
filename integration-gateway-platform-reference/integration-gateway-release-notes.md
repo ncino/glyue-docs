@@ -2,6 +2,32 @@
 
 This page tracks features, bug fixes, and other improvements included in each Integration Gateway release.
 
+## v4.23.0 — September 2026
+
+### New Features
+
+* **FICO PLOR Adapter**: Added a system-specific adapter that handles OAuth token retrieval, token refresh, and API calls for FICO PLOR
+
+### Workbench
+
+* **Integration Switcher**: Updated the integration selector in the top-left panel to switch between integrations in place
+* **Visualize Integration**: Added a Visualize Integration option to the Build page right-click menu that opens the integration in the Workbench
+* **Navigation Icon**: Updated the Workbench icon in the left navigation bar to match the Workbench welcome page
+
+### Improvements
+
+* **Fiserv DNA CoreAPI mTLS**: Added mTLS authentication support to the Fiserv DNA CoreAPI adapter with new Client Auth Cert and Client Auth Cert Password fields
+* **Build Page Cleanup**: Added a hidden-column count to the shown-columns dropdown, added tooltips to the find, deep find, and bookmark buttons, and removed the SQL Filter button
+* **Migrate Page**: Cleaned up the Migrate page
+* **File Upload Size**: Added a configurable maximum file upload size
+* **Password History**: Added password history rules that block reuse of a user's 15 most recent passwords
+
+### Bug Fixes
+
+* Fixed long integration descriptions that overlapped nodes on initial load of the Workbench
+* Resolved false 403 Permission Denied errors in IBS adapter config validation
+* Fixed an intermittent "Failed to obtain table data" error on the Build page
+
 ## v4.22.0 — August 2026
 
 ### New Features

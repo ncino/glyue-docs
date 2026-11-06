@@ -2,6 +2,36 @@
 
 This page tracks features, bug fixes, and other improvements included in each Integration Gateway release.
 
+## v4.24.0 — November 2026
+
+### New Features
+
+* **Fiserv DNA CGI Adapter**: Added a system-specific adapter for the Fiserv DNA CGI interface
+
+### Improvements
+
+* **View Changes Performance**: Reduced change set generation time for large integrations and increased the generation timeout
+* **View Changes Visibility**: Updated change set generation to run as a visible background operation that saves failure messages for review
+* **Diff Tool Line Wrap**: Added a Wrap option for long lines in the Diff Tool
+* **AuthHook Secrets**: Added encrypted AuthHook secret storage, managed from the Admin page
+* **Admin Password Reset**: Added Administrator-initiated password reset from the Admin page
+* **Vault Performance**: Added a loading indicator and improved load times for Vault items and secrets
+* **Nortridge Loan Servicing Adapter**: Added an optional Server Auth Cert field
+* **Default Integration Config**: Added automatic creation of a default integration config when you save an integration
+
+### Bug Fixes
+
+* Fixed the Show Migration Changes filter on the Diff page
+* Fixed the sub-request filter on the Run History page
+* Fixed Version History at the service request level
+* Resolved an issue where adapter config validation summary emails did not send
+* Fixed the code editor on the Custom Adapter and Shared Code pages, where scrolling overflowing content scrolled the entire page
+* Fixed jXchange adapter config validation
+* Replaced the generic 500 error on MCP endpoint lockouts with a specific, actionable message
+* Fixed the `send()` method on the `data_utils` IndexGenerator helper, which ignored the value passed to it and affected field mapping formulas that build repeating index paths
+* Fixed the Migration Diff Tool, which did not recognize some changes
+* Fixed bookmarks that did not transfer during integration migration
+
 ## v4.23.0 — September 2026
 
 ### New Features
